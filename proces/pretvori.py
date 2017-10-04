@@ -13,5 +13,5 @@ ispis.close()
 for line in output:
     print line
 
-for line in output:
+#for line in output:
     #print literal_eval(line)

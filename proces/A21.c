@@ -8,7 +8,7 @@ int main()
         int number,i,leaves=0;
         float branches;
         scanf("%d",&number);
- 
+
         for(i=0;i<number;i++)
         {
             scanf("%d",&leaves);
@@ -31,4 +31,3 @@ int main()
     }
     return 0;
 }
- 
