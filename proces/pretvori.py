@@ -3,7 +3,7 @@ import re
 #from ast import literal_eval
 name="A21.c"
 f=open(name)
-ispis=open("ispis.txt","rw+")
+ispis=open("ispis.txt","w+")
 lines=f.readlines()
 call(["gcc","-g","-c",name])
 asm=str(call(["objdump","-d","-M","intel","-S",name[:-1]+'o'],stdout=ispis)).split('\n')
@@ -11,6 +11,7 @@ ispis.seek(0)
 output=ispis.readlines()
 output= [line.strip() for line in output]
 ispis.close()
+f.close()
 
 for line in output:
     print line
@@ -36,12 +37,12 @@ for line in output:
                 code=""
             pom=line.split("\t")
 
-            asm+=pom[-1]+'\n'
+            asm+=pom[-1]+'\t'
         else:
             if asm!="":
                 assembly.append(asm)
                 asm=""
-            code+=line
+            code+=line+'\t'
 if code!="":
     kod.append(code)
     code=""
@@ -53,8 +54,9 @@ print len(kod)
 if len(assembly)!=len(kod):
     print "GRESKA!"
 else:
+    f=open("test.txt","w+")
+    f.write(str(len(kod))+'\n')
     for i in range(len(kod)):
-        print "KOD:"
-        print kod[i]
-        print "ASSEMBLY"
-        print assembly[i]
+        f.write(kod[i]+'\n')
+        f.write(assembly[i]+'\n')
+    f.close()
