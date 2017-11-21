@@ -120,12 +120,9 @@ def decode_file_line(dwarfinfo, addresses):
 
 
 if __name__ == '__main__':
-    if sys.argv[1] == '--test':
-        process_file(sys.argv[2], 0x400503)
-        sys.exit(0)
 
-    if len(sys.argv) < 3:
-        print('Expected usage: {0} <address> <executable>'.format(sys.argv[0]))
+    if len(sys.argv) < 4:
+        print('Expected usage: {0} <address1> <address2> <executable>'.format(sys.argv[0]))
         sys.exit(1)
     addr1 = int(sys.argv[1], 0)
     addr2 = int(sys.argv[2], 0)
